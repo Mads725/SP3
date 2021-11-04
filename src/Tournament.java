@@ -5,13 +5,13 @@ import java.util.Scanner;
 abstract class Tournament {
 
 
-    private String name;
+    private String TournamentName;
     private String tournamentWinner;
     private ArrayList<Team> teams;
     private ArrayList<Match> matches;
 
-    public Tournament(String name, ArrayList<Team> teams) {
-        this.name = name;
+    public Tournament(String tournamentName, ArrayList<Team> teams) {
+        this.TournamentName = tournamentName;
         this.teams = teams;
     }
 
