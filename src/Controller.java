@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Controller {
 
     Scanner scan = new Scanner(System.in); //User input
-    ArrayList<Team> joiningTeams = new ArrayList<>(); //ArrayListe på tilmeldte hold
+    //ArrayList<Team> joiningTeams = new ArrayList<>(); //ArrayListe på tilmeldte hold
 
     public void UI() {
 
@@ -23,13 +23,9 @@ public class Controller {
 
         } else if (userInput.equals("run")) {
 
-            try {
-                runTournament();
-            }catch(IOException e) {
-                e.printStackTrace();
-            }
-        }
+            runTournament();
 
+        }
     }
 
     public void createTournament() {
@@ -50,34 +46,38 @@ public class Controller {
 
     }
 
-    public void runTournament() throws FileNotFoundException {
-        File file = new File("src/Teams.txt"); //Læser Teams.txt fil som indeholder de forskellige hold.
-        Scanner readFile = new Scanner(file);
-        boolean teamFound = false;
-        int addTeamID; // Lokal variabel. Tilføj Team ID
-        String[] teamValues = {""};
+    public void runTournament() {
+
         String userInput;
         ArrayList<Team> participatingTeams = new ArrayList<>();
 
         System.out.println("Type the name of the tournament to run it. ");
         userInput = scan.nextLine();
-        addTeamID = scan.nextInt();
 
-        while (readFile.hasNextLine()) {
-            teamValues = readFile.nextLine().split(","); //Læser vores txt fil, og splitter ved "."
-            int teamID = Integer.parseInt(teamValues[0]); //[0] hold nr.
-            if (teamID == addTeamID) {
+        try {
+            File file = new File("src/" + userInput + ".txt"); //Læser Teams.txt fil som indeholder de forskellige hold.
+
+            Scanner readFile = new Scanner(file);
+
+            while (readFile.hasNextLine()) {
+
+                String[] teamValues = readFile.nextLine().split(","); //Læser vores txt fil, og splitter ved "."
+
                 ArrayList<String> player = new ArrayList<>();
                 player.add(teamValues[2]); //[2] spiller 1 på holdet
                 player.add(teamValues[3]); //[3] spiller 2 på holdet
-                Team t = new Team(teamValues[1], player); //[1] navnet på teamet
-                joiningTeams.add(t);
-                player.clear();
-                teamFound = true;
-            }
-            Tournament tournament = new Knockout(userInput, participatingTeams);
 
+                Team t = new Team(teamValues[1], player); //[1] navnet på teamet
+                participatingTeams.add(t);
+                player.clear();
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        Tournament tournament = new Knockout(userInput, participatingTeams);
 
     }
 }

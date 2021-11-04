@@ -22,8 +22,8 @@ Team *-- Player
 
 Main : + runController()
 
+Controller : + UI()
 Controller : + createTournament()
-Controller : + deleteTournament()
 Controller : + runTournament()
 
 Tournament : - private String tournamentWinner
