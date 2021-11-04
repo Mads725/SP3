@@ -38,7 +38,7 @@ abstract class Tournament {
         }
     }
 
-    private static void loadTournamentData() throws FileNotFoundException {
+    private void loadTournamentData() throws FileNotFoundException {
         File file = new File("src/MatchData.txt");
         Scanner scan = null;
         scan = new Scanner(file);

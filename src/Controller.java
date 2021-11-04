@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Controller {
@@ -16,29 +17,46 @@ public class Controller {
 
         if (userInput.equals("create")) {
 
-            System.out.println("Type the name of the tournament: ");
-            userInput = scan.nextLine();
-
-            try {
-                File newTournament = new File("src/"+userInput+".txt");
-                newTournament.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            System.out.println("File created. Please insert the teams for the tournament. ");
+            createTournament();
 
         } else if (userInput.equals("run")) {
 
-            System.out.println("Type the name of the tournament to run it. ");
-            userInput = scan.nextLine();
-
-
-
+            runTournament();
 
         }
 
     }
 
+    public void createTournament(){
+
+        String userInput;
+
+        System.out.println("Type the name of the tournament: ");
+        userInput = scan.nextLine();
+
+        try {
+            File newTournament = new File("src/"+userInput+".txt");
+            newTournament.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("File created. Please insert the teams for the tournament. ");
+
+    }
+
+    public void runTournament() {
+
+        String userInput;
+        ArrayList<Team> participatingTeams = new ArrayList<>();
+
+        System.out.println("Type the name of the tournament to run it. ");
+        userInput = scan.nextLine();
+
+
+
+        Tournament tournament = new Knockout(userInput,participatingTeams);
+
+    }
 
 }
