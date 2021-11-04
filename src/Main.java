@@ -5,7 +5,6 @@ public class Main {
         Controller control = new Controller();
         
         control.UI();
-        
 
     }
 

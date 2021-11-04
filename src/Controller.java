@@ -54,7 +54,7 @@ public class Controller {
         userInput = scan.nextLine();
 
 
-        
+
         Tournament tournament = new Knockout(userInput,participatingTeams);
 
     }
