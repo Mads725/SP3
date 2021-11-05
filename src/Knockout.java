@@ -17,6 +17,8 @@ public class Knockout extends Tournament {
 
         tournamentBracket.randomSeeding();
 
+        //tournamentBracket.matches.size();
+
         tournamentBracket.startMatch();
 
 
