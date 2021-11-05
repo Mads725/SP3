@@ -7,9 +7,19 @@ public class Knockout extends Tournament {
 
     }
 
-
     @Override
     public void runTournament() {
 
+        System.out.println("The "+getTournamentName()+" tournament is starting. ");
+
+        Bracket tournamentBracket = new Bracket(16);
+
+        tournamentBracket.randomSeeding();
+
+        tournamentBracket.startMatch();
+
+
+
     }
+
 }

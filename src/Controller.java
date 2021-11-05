@@ -26,6 +26,9 @@ public class Controller {
             runTournament();
 
         }
+
+        //TODO Add new team
+
     }
 
     public void createTournament() {
@@ -78,6 +81,7 @@ public class Controller {
         }
 
         Tournament tournament = new Knockout(userInput, participatingTeams);
+        tournament.runTournament();
 
     }
 }

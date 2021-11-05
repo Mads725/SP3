@@ -1,12 +1,21 @@
-import java.util.Random;
+import java.util.ArrayList;
 
 public class Bracket {
 
+    public Bracket(int numberParticipatingTeams) {
+
+    }
+
     public void randomSeeding() {
-        Random rand = new Random();
+
+
+
     }
 
 
+    public void nextRound() {
+
+    }
 
     public void matchHistory() {
 

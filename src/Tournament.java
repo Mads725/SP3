@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 abstract class Tournament {
@@ -7,6 +8,7 @@ abstract class Tournament {
 
     private String TournamentName;
     private String tournamentWinner;
+    private int tournamentStartTime;
     private ArrayList<Team> teams;
     private ArrayList<Match> matches;
 
@@ -15,11 +17,11 @@ abstract class Tournament {
         this.teams = teams;
     }
 
-    public void createBracket() {
+    public abstract void runTournament();
 
-    }
+    public void shuffleTeams() {
 
-    public void cancelBracket() {
+        Collections.shuffle(teams);
 
     }
 
@@ -45,8 +47,17 @@ abstract class Tournament {
 
     }
 
-    public abstract void runTournament();
+    public String getTournamentName() {
+        return TournamentName;
+    }
 
+    public int getTournamentStartTime() {
+        return tournamentStartTime;
+    }
+
+    public ArrayList<Team> getTeams() {
+        return teams;
+    }
 
     @Override
     public String toString() {
