@@ -2,7 +2,8 @@ import java.util.ArrayList;
 
 public class Team {
     private String teamName;
-    ArrayList<String>playerNames;
+    ArrayList<String> playerNames;
+    ArrayList<Player> players = new ArrayList<Player>();
 
 
     public Team(String teamName, ArrayList playerName) {
@@ -10,12 +11,13 @@ public class Team {
         this.playerNames = playerName;
     }
 
-    public void addPlayer() {
+    public void addPlayer(Player player) {
+        players.add(player);
 
     }
 
-    public void removePlayer() {
-
+    public void removePlayer(Player player) {
+        players.remove(player);
     }
 
     public void joinTournament() {
