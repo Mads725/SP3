@@ -15,17 +15,23 @@ public class Match {
     public void matchWinner() {
 
     }
-    public void randomMatchWinner() {
+    public Team randomMatchWinner() {
 
         Random rand = new Random();
         int matchDecider = rand.nextInt(1,10);
 
         if (matchDecider <= 5) {
             teamWinner = teamB;
+            return teamB;
         } else {
             teamWinner = teamA;
+            return teamA;
         }
 
+    }
+
+    public Team getTeamWinner() {
+        return teamWinner;
     }
 
     public Team getTeamA() {

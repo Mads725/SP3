@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ControllerTest {
-
+/*
     boolean tournamentFull = false;
     Scanner scan = new Scanner(System.in); //User input
     ArrayList<Team> joiningTeams = new ArrayList<>(); //ArrayListe på tilmeldte hold
@@ -78,7 +78,7 @@ public class ControllerTest {
             int teamID = Integer.parseInt(teamValues[0]); //[0] hold nr.
 
             if (teamID == addTeamID) {
-                ArrayList<String> player = new ArrayList<>();
+                ArrayList<Player> player = new ArrayList<>();
                 player.add(teamValues[2]); //[2] spiller 1 på holdet
                 player.add(teamValues[3]); //[3] spiller 2 på holdet
                 Team t = new Team(teamValues[1],player); //[1] navnet på teamet
@@ -111,4 +111,5 @@ public class ControllerTest {
     public void runTournament() {
 
     }
+    */
 }

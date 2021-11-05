@@ -4,7 +4,8 @@ import java.util.Collections;
 public class Bracket {
 
     private ArrayList<Team> teams;
-     ArrayList<Match> matches;
+     ArrayList<Match> matches = new ArrayList<>();
+     ArrayList<Match> tempMatches = new ArrayList<>();
     private int numberParticipatingTeams;
 
     public Bracket(int numberParticipatingTeams, ArrayList<Team> teams) {
@@ -20,11 +21,11 @@ public class Bracket {
 
         for (int i = 0;i<numberParticipatingTeams;i++){
 
-            if (numberParticipatingTeams%2 == 0) {
+            if (i%2 == 0) {
                 Match m = new Match();
-                m.setTeamA(teams.get(i));
                 matches.add(m);
-            } else if (numberParticipatingTeams%2 == 1){
+                matches.get(matchNumber).setTeamA(teams.get(i));
+            } else if (i%2 == 1){
                 matches.get(matchNumber).setTeamB(teams.get(i));
                 matchNumber++;
             }
@@ -36,7 +37,25 @@ public class Bracket {
 
     public void nextRound() {
 
+        int matchNumber = 0;
+        tempMatches.clear();
+        for (int i = 0;i < matches.size();i++) {
 
+            if(i%2 == 0) {
+                Match tm = new Match();
+                tempMatches.add(tm);
+                tempMatches.get(matchNumber).setTeamA(matches.get(i).getTeamWinner());
+            } else if (i%2 == 1) {
+                tempMatches.get(matchNumber).setTeamB(matches.get(i).getTeamWinner());
+                matchNumber++;
+            }
+
+        }
+
+        matches = tempMatches;
+        tempMatches.clear();
+
+        //TODO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>HER<<<<<<<<<<<<<<<<<<<<<<<<<<<<< måske startmatch()
 
     }
 
@@ -53,8 +72,15 @@ public class Bracket {
     }
 
     public void startMatch() {
-        
-        
+        int thisMatch = 0;
+
+        while (thisMatch < matches.size()) {
+            matches.get(thisMatch).randomMatchWinner();
+            System.out.println(matches.get(thisMatch).getTeamWinner());
+            thisMatch++;
+        }
+
+        nextRound();
 
     }
 

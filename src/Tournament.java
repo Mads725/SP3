@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 abstract class Tournament {
 
-
     private String TournamentName;
     private String tournamentWinner;
     private int tournamentStartTime;
@@ -18,12 +17,6 @@ abstract class Tournament {
     }
 
     public abstract void runTournament();
-
-    public void addMatchesToTournament(ArrayList<Match> newMatches) {
-
-
-
-    }
 
     private void saveTournamentData() { // Gemmer turneringsdata i en txt fil
         String tournamentData = "";
