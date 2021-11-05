@@ -1,12 +1,21 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Bracket {
 
-    public Bracket(int numberParticipatingTeams) {
+    private ArrayList<Team> teams;
+    private ArrayList<Match> matches;
+    private int numberParticipatingTeams;
+
+    public Bracket(int numberParticipatingTeams, ArrayList<Team> teams) {
+        this.numberParticipatingTeams = numberParticipatingTeams;
+        this.teams = teams;
 
     }
 
     public void randomSeeding() {
+
+        Collections.shuffle(teams);
 
 
 

@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 abstract class Tournament {
@@ -11,6 +10,7 @@ abstract class Tournament {
     private int tournamentStartTime;
     private ArrayList<Team> teams;
     private ArrayList<Match> matches;
+    Bracket connectedBracket;
 
     public Tournament(String tournamentName, ArrayList<Team> teams) {
         this.TournamentName = tournamentName;
@@ -19,9 +19,9 @@ abstract class Tournament {
 
     public abstract void runTournament();
 
-    public void shuffleTeams() {
+    public void addMatchesToTournament(ArrayList<Match> newMatches) {
 
-        Collections.shuffle(teams);
+
 
     }
 

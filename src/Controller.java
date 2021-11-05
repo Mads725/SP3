@@ -8,7 +8,8 @@ import java.util.Scanner;
 public class Controller {
 
     Scanner scan = new Scanner(System.in); //User input
-    //ArrayList<Team> joiningTeams = new ArrayList<>(); //ArrayListe på tilmeldte hold
+    ArrayList<Team> participatingTeams = new ArrayList<>();//ArrayListe på tilmeldte hold
+    String tournamentName;
 
     public void UI() {
 
@@ -52,10 +53,11 @@ public class Controller {
     public void runTournament() {
 
         String userInput;
-        ArrayList<Team> participatingTeams = new ArrayList<>();
 
         System.out.println("Type the name of the tournament to run it. ");
         userInput = scan.nextLine();
+
+        tournamentName = userInput;
 
         try {
             File file = new File("src/" + userInput + ".txt"); //Læser Teams.txt fil som indeholder de forskellige hold.
@@ -78,9 +80,12 @@ public class Controller {
 
         } catch (IOException e) {
             e.printStackTrace();
+
+            //TODO cant find tournament fail state
+
         }
 
-        Tournament tournament = new Knockout(userInput, participatingTeams);
+        Tournament tournament = new Knockout(tournamentName, participatingTeams);
         tournament.runTournament();
 
     }

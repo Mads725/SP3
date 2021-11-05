@@ -12,11 +12,14 @@ public class Knockout extends Tournament {
 
         System.out.println("The "+getTournamentName()+" tournament is starting. ");
 
-        Bracket tournamentBracket = new Bracket(16);
+        Bracket tournamentBracket = new Bracket(16,getTeams());
+        connectedBracket = tournamentBracket;
 
         tournamentBracket.randomSeeding();
 
         tournamentBracket.startMatch();
+
+
 
 
 
