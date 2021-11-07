@@ -87,6 +87,6 @@ public class Controller {
 
         Tournament tournament = new Knockout(tournamentName, participatingTeams);
         tournament.runTournament();
-
     }
+
 }
