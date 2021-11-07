@@ -1,23 +1,57 @@
+import java.util.Random;
+
 public class Match {
     private String gameTime;
     private int teamAScore;
     private int teamBScore;
-    private String teamWinner;
+    private Team teamWinner;
 
-    public Match(String gameTime, int teamAScore, int teamBScore, String teamWinner) {
-        this.gameTime = gameTime;
-        this.teamAScore = teamAScore;
-        this.teamBScore = teamBScore;
-        this.teamWinner = teamWinner;
+    private Team teamA;
+    private Team teamB;
+
+    public Match(){
     }
 
     public void matchWinner() {
 
     }
+    public Team randomMatchWinner() {
+
+        Random rand = new Random();
+        int matchDecider = rand.nextInt(1,10);
+
+        if (matchDecider <= 5) {
+            teamWinner = teamB;
+            return teamB;
+        } else {
+            teamWinner = teamA;
+            return teamA;
+        }
+
+    }
+
+    public Team getTeamWinner() {
+        return teamWinner;
+    }
+
+    public Team getTeamA() {
+        return teamA;
+    }
+
+    public void setTeamA(Team teamA) {
+        this.teamA = teamA;
+    }
+
+    public Team getTeamB() {
+        return teamB;
+    }
+
+    public void setTeamB(Team teamB) {
+        this.teamB = teamB;
+    }
 
     @Override
     public String toString() {
-        String s = "";
-        return s;
+        return ""+teamA+" played "+teamB+" and "+teamWinner+" won.";
     }
 }

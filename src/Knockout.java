@@ -4,7 +4,6 @@ public class Knockout extends Tournament {
 
     public Knockout(String name,ArrayList<Team> teams) {
         super(name,teams);
-
     }
 
     @Override
@@ -16,6 +15,8 @@ public class Knockout extends Tournament {
         connectedBracket = tournamentBracket;
 
         tournamentBracket.randomSeeding();
+
+        System.out.println(tournamentBracket.matches.size());
 
         tournamentBracket.startMatch();
 

@@ -2,13 +2,13 @@ import java.util.ArrayList;
 
 public class Team {
     private String teamName;
-    ArrayList<String> playerNames;
-    ArrayList<Player> players = new ArrayList<Player>();
+    private ArrayList<Player> players;
 
-
-    public Team(String teamName, ArrayList playerName) {
+    public Team(String teamName, ArrayList<Player> players) {
         this.teamName = teamName;
-        this.playerNames = playerName;
+        this.players = players;
+        //System.out.println(players);
+        System.out.println(this.players);
     }
 
     public void addPlayer(Player player) {
@@ -32,14 +32,12 @@ public class Team {
         return teamName;
     }
 
-    public ArrayList getPlayerName() {
-        return playerNames;
-    }
 
     @Override
     public String toString() {
-        String s = "Team : " + teamName + "\n" + "Players : " + playerNames;
+        String s = "Team " + teamName +  " - Players : " + players;
         return s;
+        //TODO kan ikke få toString til at sige player navne ^
     }
 
 }

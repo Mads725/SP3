@@ -3,15 +3,10 @@ import java.util.ArrayList;
 public class Player {
 
     private String name;
-    private int age;
     private String playerMail;
-    private ArrayList<Player>players;
 
-    public Player(String name, int age, String playerMail, ArrayList<Player> players) {
+    public Player(String name) {
         this.name = name;
-        this.age = age;
-        this.playerMail = playerMail;
-        this.players = players;
     }
 
     public void createTeam() {
@@ -24,7 +19,6 @@ public class Player {
 
     @Override
     public String toString() {
-        String s = "";
-        return s;
+        return name+"";
     }
 }

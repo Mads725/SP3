@@ -68,9 +68,11 @@ public class Controller {
 
                 String[] teamValues = readFile.nextLine().split(","); //Læser vores txt fil, og splitter ved "."
 
-                ArrayList<String> player = new ArrayList<>();
-                player.add(teamValues[2]); //[2] spiller 1 på holdet
-                player.add(teamValues[3]); //[3] spiller 2 på holdet
+                ArrayList<Player> player = new ArrayList<>();
+                Player player1 = new Player(teamValues[2]);
+                Player player2 = new Player(teamValues[3]);
+                player.add(player1);
+                player.add(player2);
 
                 Team t = new Team(teamValues[1], player); //[1] navnet på teamet
                 participatingTeams.add(t);
