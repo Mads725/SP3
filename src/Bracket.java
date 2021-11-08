@@ -3,7 +3,6 @@ import java.util.Collections;
 
 public class Bracket {
 
-<<<<<<< Updated upstream
     private ArrayList<Team> teams;
      ArrayList<Match> matches = new ArrayList<>();
      ArrayList<Match> tempMatches = new ArrayList<>();
@@ -12,12 +11,6 @@ public class Bracket {
     public Bracket(int numberParticipatingTeams, ArrayList<Team> teams) {
         this.numberParticipatingTeams = numberParticipatingTeams;
         this.teams = teams;
-=======
-
-
-
-    public Bracket(int numberParticipatingTeam) {
->>>>>>> Stashed changes
 
     }
 
@@ -37,11 +30,9 @@ public class Bracket {
                 matchNumber++;
             }
 
-<<<<<<< Updated upstream
         }
 
-=======
->>>>>>> Stashed changes
+
     }
 
 
@@ -80,7 +71,6 @@ public class Bracket {
     }
 
     public void startMatch() {
-<<<<<<< Updated upstream
         int thisMatch = 0;
 
         while (thisMatch < matches.size()) {
@@ -90,9 +80,6 @@ public class Bracket {
         }
 
         nextRound();
-=======
-
->>>>>>> Stashed changes
 
     }
 

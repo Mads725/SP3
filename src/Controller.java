@@ -110,11 +110,9 @@ public class Controller {
 
         }
 
-<<<<<<< Updated upstream
         Tournament tournament = new Knockout(tournamentName, participatingTeams);
         tournament.runTournament();
-=======
->>>>>>> Stashed changes
+
     }
 
 }
