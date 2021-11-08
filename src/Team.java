@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Team {
     private String teamName;
+    private int totalMålScore;
     private ArrayList<Player> players = new ArrayList<>();
 
     public Team(String teamName, ArrayList<Player> playersIn) {
