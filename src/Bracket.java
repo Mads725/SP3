@@ -42,8 +42,13 @@ public class Bracket {
 
         int thisMatch = 0;
 
+        //TODO skifte mellem at køre næste kamp og gemme hele tuneringen som en fil.
+
         while (thisMatch < matches.size()) {
             matches.get(thisMatch).randomMatchWinner();
+
+            //TODO væk fra randomMatchWinner() til matchWinner().
+
             System.out.println(matches.get(thisMatch).getTeamWinner()); //Test
             thisMatch++;
         }
@@ -85,7 +90,9 @@ public class Bracket {
         }
     }
 
-    public void matchHistory() {    }
+    public void matchHistory() {
+
+    }
 
     public void nextMatchReminder() {    }
 
