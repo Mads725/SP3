@@ -87,8 +87,6 @@ public class Controller {
 
             while (readFile.hasNextLine()) {
 
-                readFile.nextLine();
-
                 String[] teamValues = readFile.nextLine().split(","); //Læser vores txt fil, og splitter ved "."
 
                 ArrayList<Player> player = new ArrayList<>();
