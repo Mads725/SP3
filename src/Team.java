@@ -21,10 +21,6 @@ public class Team {
         players.remove(player);
     }
 
-    public void joinTournament() {    }
-
-    public void leaveTournament() {    }
-
     public String getTeamName() {
         return teamName;
     }
@@ -33,7 +29,6 @@ public class Team {
     public String toString() {
         String s = "Team " + teamName +  " - Players : " + players;
         return s;
-        //TODO kan ikke få toString til at sige player navne ^
     }
 
 }
