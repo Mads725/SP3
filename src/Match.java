@@ -18,7 +18,7 @@ public class Match {
     public Team randomMatchWinner() {
 
         Random rand = new Random();
-        int matchDecider = rand.nextInt(1,10);
+        int matchDecider = (int) Math.random()*10;
 
         if (matchDecider <= 5) {
             teamWinner = teamB;

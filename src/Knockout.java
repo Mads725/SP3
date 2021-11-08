@@ -2,28 +2,23 @@ import java.util.ArrayList;
 
 public class Knockout extends Tournament {
 
-    public Knockout(String name,ArrayList<Team> teams) {
-        super(name,teams);
+    public Knockout(String name, ArrayList<Team> teams) {
+        super(name, teams);
     }
 
     @Override
     public void runTournament() {
 
-        System.out.println("The "+getTournamentName()+" tournament is starting. ");
+        System.out.println("The " + getTournamentName() + " tournament is starting. ");
 
-        Bracket tournamentBracket = new Bracket(16,getTeams());
+        Bracket tournamentBracket = new Bracket(16, getTeams());
         connectedBracket = tournamentBracket;
+
+        System.out.println(getTeams().size()+" teams enter one team leaves! \n");
 
         tournamentBracket.randomSeeding();
 
-        System.out.println(tournamentBracket.matches.size());
-
         tournamentBracket.startMatch();
 
-
-
-
-
     }
-
 }
