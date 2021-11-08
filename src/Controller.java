@@ -1,12 +1,11 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Controller {
 
+    private final static int CURRENT_YEAR = 2021;
+    private final static int TOURNAMENT_START_TIME = 1000;
     Scanner scan = new Scanner(System.in); //User input
     ArrayList<Team> participatingTeams = new ArrayList<>();//ArrayListe på tilmeldte hold
     String tournamentName;
@@ -24,7 +23,7 @@ public class Controller {
 
         } else if (userInput.equals("run")) {
 
-            runTournament();
+            startTournament();
 
         }
 
@@ -35,23 +34,42 @@ public class Controller {
     public void createTournament() {
 
         String userInput;
+        int userInputDate;
+        int userInputMonth;
 
         System.out.println("Type the name of the tournament: ");
         userInput = scan.nextLine();
-
+/*
         try {
             File newTournament = new File("src/" + userInput + ".txt");
             newTournament.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
+*/
+        System.out.println("Type the day of the tournament. ");
+        userInputDate = scan.nextInt();
+        System.out.println("Type the month of the tournament. ");
+        userInputMonth = scan.nextInt();
 
-        System.out.println("File created. Please insert the teams for the tournament. ");
+        //LocalDate.of(CURRENT_YEAR,userInputMonth,userInputDate);
+
+        try {
+            File newTournament = new File("src/" + userInput + ".txt");
+            BufferedWriter writeOut = new BufferedWriter(new FileWriter(newTournament));
+            writeOut.write("The tournament "+userInput+" starts "+CURRENT_YEAR+"-"+userInputMonth+"-"+userInputDate);
+            writeOut.close();
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
+        System.out.println("Tournament created. ");
 
     }
 
-    public void runTournament() {
+    public void startTournament() {
 
+        //LocalDate tournamentDate;
         String userInput;
 
         System.out.println("Type the name of the tournament to run it. ");
@@ -64,7 +82,12 @@ public class Controller {
 
             Scanner readFile = new Scanner(file);
 
+            //String[] dateValues = readFile.nextLine().split("-");
+            //tournamentDate = LocalDate.of(CURRENT_YEAR,Integer.parseInt(dateValues[1]),Integer.parseInt(dateValues[2]));
+
             while (readFile.hasNextLine()) {
+
+                readFile.nextLine();
 
                 String[] teamValues = readFile.nextLine().split(","); //Læser vores txt fil, og splitter ved "."
 

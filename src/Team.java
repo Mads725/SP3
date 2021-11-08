@@ -2,36 +2,31 @@ import java.util.ArrayList;
 
 public class Team {
     private String teamName;
-    private ArrayList<Player> players;
+    private ArrayList<Player> players = new ArrayList<>();
 
-    public Team(String teamName, ArrayList<Player> players) {
+    public Team(String teamName, ArrayList<Player> playersIn) {
         this.teamName = teamName;
-        this.players = players;
-        //System.out.println(players);
-        System.out.println(this.players);
+
+        for (Player p : playersIn) {
+            players.add(p);
+        }
     }
 
     public void addPlayer(Player player) {
         players.add(player);
-
     }
 
     public void removePlayer(Player player) {
         players.remove(player);
     }
 
-    public void joinTournament() {
+    public void joinTournament() {    }
 
-    }
-
-    public void leaveTournament() {
-
-    }
+    public void leaveTournament() {    }
 
     public String getTeamName() {
         return teamName;
     }
-
 
     @Override
     public String toString() {
