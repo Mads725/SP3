@@ -37,9 +37,11 @@ public class Controller {
             } else if (userInput.equalsIgnoreCase("q")) {
                 System.out.println("Quitting");
                 tournamentExist = false;
+
             }
 
         } while (tournamentExist);
+
     }
 
     public void createTournament() {
