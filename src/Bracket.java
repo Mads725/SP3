@@ -45,11 +45,13 @@ public class Bracket {
         //TODO skifte mellem at køre næste kamp og gemme hele tuneringen som en fil.
 
         while (thisMatch < matches.size()) {
-            matches.get(thisMatch).randomMatchWinner();
+
+            nextMatchReminder(thisMatch);
+            matches.get(thisMatch).matchWinner();
 
             //TODO væk fra randomMatchWinner() til matchWinner().
 
-            System.out.println(matches.get(thisMatch).getTeamWinner()); //Test
+            //System.out.println(matches.get(thisMatch).getTeamWinner()); //Test
             thisMatch++;
         }
 
@@ -60,7 +62,7 @@ public class Bracket {
 
         if (matches.size() == 1) {
 
-            System.out.println("Winner! "+matches.get(0).getTeamWinner()+" Congratulations!" );
+            System.out.println(matches.get(0).toString());
 
         } else {
 
@@ -85,17 +87,21 @@ public class Bracket {
             }
 
             roundNumber++;
-            System.out.println(roundNumber);
+            System.out.println("Round number: "+roundNumber);
             startMatch();
         }
     }
 
-    public void matchHistory() {
+    public void matchHistory() {    }
 
-    }
+    public void nextMatchReminder(int currentMatch) {
 
-    public void nextMatchReminder() {
-
+        if (currentMatch == matches.size()) {
+            System.out.println("Next will start shortly, be ready! ");
+        } else {
+            System.out.println(matches.get(currentMatch+1).getTeamA().getTeamName()+" and "
+                    +matches.get(currentMatch+1).getTeamB().getTeamName()+", please get ready for the next match. ");
+        }
 
     }
 

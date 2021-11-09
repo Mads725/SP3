@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Team {
     private final String teamName;
-    private int totalMålScore;
+    private int totalGoalScore = 0;
     private ArrayList<Player> players = new ArrayList<>();
 
     public Team(String teamName, ArrayList<Player> playersIn) {
@@ -11,6 +11,14 @@ public class Team {
         for (Player p : playersIn) {
             players.add(p);
         }
+    }
+
+    public int getTotalGoalScore() {
+        return totalGoalScore;
+    }
+
+    public void setTotalGoalScore(int totalGoalScore) {
+        this.totalGoalScore += totalGoalScore;
     }
 
     public void addPlayer(Player player) {

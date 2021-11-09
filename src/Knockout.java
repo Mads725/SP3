@@ -22,7 +22,5 @@ public class Knockout extends Tournament {
 
         setTournamentWinner(tournamentBracket.matches.get(0).getTeamWinner());
 
-        System.out.println(getTournamentWinner() + " -> testing tester");
-
     }
 }
