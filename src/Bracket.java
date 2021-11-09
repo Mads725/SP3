@@ -90,8 +90,13 @@ public class Bracket {
         }
     }
 
-    public void matchHistory() {    }
+    public void matchHistory() {
 
-    public void nextMatchReminder() {    }
+    }
+
+    public void nextMatchReminder() {
+
+
+    }
 
 }
