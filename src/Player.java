@@ -1,24 +1,13 @@
-import java.util.ArrayList;
-
 public class Player {
 
     private String name;
-    private String playerMail;
 
-    public Player(String name) {
+    public Player(String name) { //Constructor
         this.name = name;
     }
 
-    public void createTeam() {
-
-    }
-
-    public void leaveTeam() {
-
-    }
-
     @Override
-    public String toString() {
-        return name+"";
+    public String toString() { //toString
+        return name;
     }
 }
