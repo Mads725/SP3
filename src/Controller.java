@@ -1,3 +1,5 @@
+import jdk.swing.interop.SwingInterOpUtils;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,23 +14,35 @@ public class Controller {
 
     public void UI() {
 
+        System.out.println("* * * TOURNAMENT MENU * * *");
+        System.out.println("Please select an option below");
         String userInput;
+        boolean tournamentExist = false;
+        //userInput = scan.nextLine();
 
-        System.out.println("Type 'create' to create a new tournament. Type 'run' to run an existing tournament. ");
-        userInput = scan.nextLine();
+        do {
+            System.out.println("Type 'create' to create a new Tournament");
+            System.out.println("Type 'run' to run an existing Tournament");
+            System.out.println("Press Q to quit the program");
+            userInput = scan.nextLine();
 
-        if (userInput.equals("create")) {
+            if (userInput.equals("create")) {
 
-            createTournament();
+                createTournament();
 
-        } else if (userInput.equals("run")) {
+            } else if (userInput.equals("run")) {
 
-            startTournament();
+                runTournament();
 
-        }
+            } else if (tournamentExist) {
+                System.out.println("Tournament does not exist, try a different one");
 
-        //TODO Add new team
+            } else if (userInput.equalsIgnoreCase("q")) {
+                System.out.println("Quitting");
+                tournamentExist = false;
+            }
 
+        } while (tournamentExist);
     }
 
     public void createTournament() {
@@ -36,6 +50,8 @@ public class Controller {
         String userInput;
         int userInputDate;
         int userInputMonth;
+        boolean quit = false;
+
 
         System.out.println("Type the name of the tournament: ");
         userInput = scan.nextLine();
@@ -48,16 +64,16 @@ public class Controller {
         }
 */
         System.out.println("Type the day of the tournament. ");
-        userInputDate = scan.nextInt();
+        userInputDate = Integer.parseInt(scan.nextLine());
         System.out.println("Type the month of the tournament. ");
-        userInputMonth = scan.nextInt();
+        userInputMonth = Integer.parseInt(scan.nextLine());
 
         //LocalDate.of(CURRENT_YEAR,userInputMonth,userInputDate);
 
         try {
             File newTournament = new File("src/" + userInput + ".txt");
             BufferedWriter writeOut = new BufferedWriter(new FileWriter(newTournament));
-            writeOut.write("The tournament "+userInput+" starts "+CURRENT_YEAR+"-"+userInputMonth+"-"+userInputDate);
+            writeOut.write("The tournament " + userInput + " starts " + CURRENT_YEAR + "-" + userInputMonth + "-" + userInputDate);
             writeOut.close();
         } catch (IOException e) {
             System.out.println(e);
@@ -65,9 +81,19 @@ public class Controller {
 
         System.out.println("Tournament created. ");
 
+        //TODO lav en add method med teams og derefter run
+
+        System.out.println("Would you like to start the game? ");
+        String input = scan.nextLine();
+        if (input.equalsIgnoreCase("yes")) {
+            runTournament();
+        } else if (input.equalsIgnoreCase("no")) {
+            System.out.println("Quitting program");
+            quit = false;
+        }
     }
 
-    public void startTournament() {
+    public void runTournament() {
 
         //LocalDate tournamentDate;
         String userInput;
