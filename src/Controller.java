@@ -16,7 +16,6 @@ public class Controller {
         System.out.println("Please select an option below");
         String userInput;
         boolean tournamentExist = false;
-        //userInput = scan.nextLine();
 
         do {
             System.out.println("Type 'create' to create a new Tournament");
@@ -48,19 +47,9 @@ public class Controller {
         String userInput;
         int userInputDate;
         int userInputMonth;
-        boolean quit = false;
-
 
         System.out.println("Type the name of the tournament: ");
         userInput = scan.nextLine();
-/*
-        try {
-            File newTournament = new File("src/" + userInput + ".txt");
-            newTournament.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-*/
         System.out.println("Type the day of the tournament. ");
         userInputDate = Integer.parseInt(scan.nextLine());
         System.out.println("Type the month of the tournament. ");
@@ -79,15 +68,12 @@ public class Controller {
 
         System.out.println("Tournament created. ");
 
-        //TODO lav en add method med teams og derefter run
-
         System.out.println("Would you like to start the game? ");
         String input = scan.nextLine();
         if (input.equalsIgnoreCase("yes")) {
             runTournament();
         } else if (input.equalsIgnoreCase("no")) {
             System.out.println("Quitting program");
-            quit = false;
         }
     }
 
@@ -127,9 +113,6 @@ public class Controller {
 
         } catch (IOException e) {
             e.printStackTrace();
-
-            //TODO cant find tournament fail state
-
         }
 
         Tournament tournament = new Knockout(tournamentName, participatingTeams);

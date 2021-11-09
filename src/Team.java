@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Team {
-    private String teamName;
+    private final String teamName;
     private int totalMålScore;
     private ArrayList<Player> players = new ArrayList<>();
 
@@ -27,8 +27,7 @@ public class Team {
 
     @Override
     public String toString() {
-        String s = "Team " + teamName +  " - Players : " + players;
-        return s;
+        return "Team " + teamName +  " - Players : " + players;
     }
 
 }

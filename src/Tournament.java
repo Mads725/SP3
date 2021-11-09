@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 abstract class Tournament {
 
-    private String TournamentName;
-    private String tournamentWinner;
-    private int tournamentStartTime;
+    private final String TournamentName;
+    private Team tournamentWinner;
+    private int tournamentStartTime; //useless
     private ArrayList<Team> teams;
-    private ArrayList<Match> matches;
-    Bracket connectedBracket;
+    private ArrayList<Match> matches; //useless
+    protected Bracket connectedBracket;
 
     public Tournament(String tournamentName, ArrayList<Team> teams) {
         this.TournamentName = tournamentName;
@@ -17,7 +17,7 @@ abstract class Tournament {
     }
 
     public abstract void runTournament();
-
+/*
     private void saveTournamentData() { // Gemmer turneringsdata i en txt fil
         String tournamentData = "";
 
@@ -39,6 +39,14 @@ abstract class Tournament {
         scan = new Scanner(file);
 
     }
+*/
+    public Team getTournamentWinner() {
+        return tournamentWinner;
+    }
+
+    public void setTournamentWinner(Team tournamentWinner) {
+        this.tournamentWinner = tournamentWinner;
+    }
 
     public String getTournamentName() {
         return TournamentName;
@@ -50,12 +58,6 @@ abstract class Tournament {
 
     public ArrayList<Team> getTeams() {
         return teams;
-    }
-
-    @Override
-    public String toString() {
-        String s = "";
-        return s;
     }
 
 }

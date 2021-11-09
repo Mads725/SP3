@@ -11,7 +11,7 @@ public class Knockout extends Tournament {
 
         System.out.println("The " + getTournamentName() + " tournament is starting. ");
 
-        Bracket tournamentBracket = new Bracket(16, getTeams());
+        Bracket tournamentBracket = new Bracket(getTeams().size(), getTeams());
         connectedBracket = tournamentBracket;
 
         System.out.println(getTeams().size()+" teams enter one team leaves! \n");
@@ -19,6 +19,10 @@ public class Knockout extends Tournament {
         tournamentBracket.randomSeeding();
 
         tournamentBracket.startMatch();
+
+        setTournamentWinner(tournamentBracket.matches.get(0).getTeamWinner());
+
+        System.out.println(getTournamentWinner() + " -> testing tester");
 
     }
 }

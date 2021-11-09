@@ -6,7 +6,7 @@ public class Bracket {
     private ArrayList<Team> teams;
     ArrayList<Match> matches = new ArrayList<>();
     ArrayList<Match> tempMatches = new ArrayList<>();
-    private int numberParticipatingTeams;
+    private final int numberParticipatingTeams;
     private int roundNumber = 0;
 
     public Bracket(int numberParticipatingTeams, ArrayList<Team> teams) {
@@ -31,7 +31,7 @@ public class Bracket {
                 Match m = new Match();
                 matches.add(m);
                 matches.get(matchNumber).setTeamA(teams.get(i));
-            } else if (i % 2 == 1) {
+            } else {
                 matches.get(matchNumber).setTeamB(teams.get(i));
                 matchNumber++;
             }
@@ -72,7 +72,7 @@ public class Bracket {
                     Match tm = new Match();
                     tempMatches.add(tm);
                     tempMatches.get(matchNumber).setTeamA(matches.get(i).getTeamWinner());
-                } else if (i % 2 == 1) {
+                } else {
                     tempMatches.get(matchNumber).setTeamB(matches.get(i).getTeamWinner());
                     matchNumber++;
                 }
