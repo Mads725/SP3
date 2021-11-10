@@ -4,20 +4,21 @@ import java.util.Scanner;
 
 public class Controller {
 
-    private final static int CURRENT_YEAR = 2021;
-    private final static int TOURNAMENT_START_TIME = 1000;
-    Scanner scan = new Scanner(System.in); //User input
-    ArrayList<Team> participatingTeams = new ArrayList<>();//ArrayListe på tilmeldte hold
-    String tournamentName;
+    private final static int CURRENT_YEAR = 2021; // Tournament start year
+    private final static int TOURNAMENT_START_TIME = 1000; //Tournament start time. Always start at 10:00
+    Scanner scan = new Scanner(System.in); //Scanner for user inputs
+    ArrayList<Team> participatingTeams = new ArrayList<>(); // ArrayList for participating teams of Team
+    private String tournamentName;
 
-    public void UI() {
+    public void UI() { //Method UI (tournament menu)
 
         System.out.println("* * * TOURNAMENT MENU * * *");
         System.out.println("Please select an option below");
         String userInput;
         boolean tournamentExist = false;
 
-        do {
+        do { //Do - While loop for more than one user inputs
+
             System.out.println("Type 'create' to create a new Tournament");
             System.out.println("Type 'run' to run an existing Tournament");
             System.out.println("Press Q to quit the program");
@@ -44,7 +45,7 @@ public class Controller {
 
     }
 
-    public void createTournament() {
+    public void createTournament() { //Method to create a tournament
 
         String userInput;
         int userInputDate;
@@ -59,7 +60,7 @@ public class Controller {
 
         //LocalDate.of(CURRENT_YEAR,userInputMonth,userInputDate);
 
-        try {
+        try { // File writer. Making a new file for a tournament with year, date, month and time
             File newTournament = new File("src/" + userInput + ".txt");
             BufferedWriter writeOut = new BufferedWriter(new FileWriter(newTournament));
             writeOut.write("The tournament " + userInput + " starts " + CURRENT_YEAR + "-" + userInputMonth + "-" + userInputDate);
