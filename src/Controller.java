@@ -30,7 +30,7 @@ public class Controller {
 
             } else if (userInput.equalsIgnoreCase("run")) {
 
-                runTournament();
+                startTournament();
 
             } else if (tournamentExist) {
                 System.out.println("Tournament does not exist, try a different one");
@@ -60,7 +60,7 @@ public class Controller {
 
         //LocalDate.of(CURRENT_YEAR,userInputMonth,userInputDate);
 
-        try { // File writer. Making a new file for a tournament with year, date, month and time
+        try { // File writer. Making a new file for a tournament with year, date, month and time written of the first line
             File newTournament = new File("src/" + userInput + ".txt");
             BufferedWriter writeOut = new BufferedWriter(new FileWriter(newTournament));
             writeOut.write("The tournament " + userInput + " starts " + CURRENT_YEAR + "-" + userInputMonth + "-" + userInputDate);
@@ -74,13 +74,13 @@ public class Controller {
         System.out.println("Would you like to start the game? ");
         String input = scan.nextLine();
         if (input.equalsIgnoreCase("yes")) {
-            runTournament();
+            startTournament(); //--------------------------- Starts the tournament----------------------------------
         } else if (input.equalsIgnoreCase("no")) {
             System.out.println("Quitting program");
         }
     }
 
-    public void runTournament() {
+    public void startTournament() { // Method starts up the tournament
 
         //LocalDate tournamentDate;
         String userInput;
@@ -91,16 +91,16 @@ public class Controller {
         tournamentName = userInput;
 
         try {
-            File file = new File("src/" + userInput + ".txt"); //Læser Teams.txt fil som indeholder de forskellige hold.
+            File file = new File("src/" + userInput + ".txt"); //
 
             Scanner readFile = new Scanner(file);
 
             //String[] dateValues = readFile.nextLine().split("-");
             //tournamentDate = LocalDate.of(CURRENT_YEAR,Integer.parseInt(dateValues[1]),Integer.parseInt(dateValues[2]));
 
-            while (readFile.hasNextLine()) {
+            while (readFile.hasNextLine()) { // Gets the teams from the tournament text file and creates objects
 
-                String[] teamValues = readFile.nextLine().split(","); //Læser vores txt fil, og splitter ved "."
+                String[] teamValues = readFile.nextLine().split(",");
 
                 ArrayList<Player> player = new ArrayList<>();
                 Player player1 = new Player(teamValues[2]);
@@ -108,7 +108,7 @@ public class Controller {
                 player.add(player1);
                 player.add(player2);
 
-                Team t = new Team(teamValues[1], player); //[1] navnet på teamet
+                Team t = new Team(teamValues[1], player); // Creates a team with a team name and an array of players
                 participatingTeams.add(t);
                 player.clear();
 
@@ -118,7 +118,7 @@ public class Controller {
             e.printStackTrace();
         }
 
-        Tournament tournament = new Knockout(tournamentName, participatingTeams);
+        Tournament tournament = new Knockout(tournamentName, participatingTeams); // Creates the tournament object and starts it
         tournament.runTournament();
 
     }

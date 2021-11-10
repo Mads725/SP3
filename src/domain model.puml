@@ -1,19 +1,23 @@
 @startuml
 object Tournament
+object Main
 object Controller
+object Knockout
+object Group
 object Team
 object Match
 object Bracket
 object Player
 
+Main *-- Controller
 Controller *-- Tournament
-Tournament *-- Bracket
-Tournament *-- Team
+Tournament <|-- Knockout
+Tournament <|-- Group
+Knockout *-- Bracket
+Group *-- Match
 Team *-- Player
-
 Bracket *-- Match
+Bracket *-- Team
 Match *-- Team
-
-
 
 @enduml

@@ -3,15 +3,15 @@ import java.util.Scanner;
 
 public class Match {
     private String gameTime; //useless
-    private int teamAScore;
-    private int teamBScore;
+    private int teamAScore = 0;
+    private int teamBScore = 0;
     private Team teamWinner;
 
     private Team teamA;
     private Team teamB;
 
 
-    public void matchWinner() {
+    public void matchWinner() { // Prompts the user to input the score after every match
 
         Scanner scan = new Scanner(System.in);
 
@@ -30,7 +30,7 @@ public class Match {
             System.out.println("Please type the number of goals team "+teamB.getTeamName()+" scored. ");
             teamBScore = Integer.parseInt(scan.nextLine());
         }
-        if (teamAScore < teamBScore) {
+        if (teamAScore < teamBScore) { // Decides the winner by score
             teamWinner = teamB;
             teamWinner.setTotalGoalScore(teamBScore-teamAScore);
         } else {
@@ -41,7 +41,7 @@ public class Match {
         System.out.println("Team "+teamWinner.getTeamName()+" won the match. ");
 
     }
-    public void randomMatchWinner() {
+    public void randomMatchWinner() { // Test method
 
         Random random = new Random();
         int matchDecider = random.nextInt(10)+1;
@@ -54,6 +54,7 @@ public class Match {
 
     }
 
+    // Getters and Setters
     public Team getTeamWinner() {
         return teamWinner;
     }

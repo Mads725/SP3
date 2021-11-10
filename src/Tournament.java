@@ -40,6 +40,8 @@ abstract class Tournament {
 
     }
 */
+
+    // Getters and setters
     public Team getTournamentWinner() {
         return tournamentWinner;
     }

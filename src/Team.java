@@ -13,20 +13,21 @@ public class Team {
         }
     }
 
+    public void addPlayer(Player player) {
+        players.add(player);
+    }
+    public void removePlayer(Player player) {
+        players.remove(player);
+    }
+
+    // Getters and setters
+
     public int getTotalGoalScore() {
         return totalGoalScore;
     }
 
     public void setTotalGoalScore(int totalGoalScore) {
         this.totalGoalScore += totalGoalScore;
-    }
-
-    public void addPlayer(Player player) {
-        players.add(player);
-    }
-
-    public void removePlayer(Player player) {
-        players.remove(player);
     }
 
     public String getTeamName() {
