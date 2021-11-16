@@ -1,126 +1,100 @@
-import java.io.*;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class Controller {
 
-    private final static int CURRENT_YEAR = 2021; // Tournament start year
-    private final static int TOURNAMENT_START_TIME = 1000; //Tournament start time. Always start at 10:00
-    Scanner scan = new Scanner(System.in); //Scanner for user inputs
-    ArrayList<Team> participatingTeams = new ArrayList<>(); // ArrayList for participating teams of Team
     private String tournamentName;
+    ArrayList<Team> participatingTeams = new ArrayList<>();
+    Scanner scan = new Scanner(System.in);
+    Io Io = new Io(); //Method calling
 
-    public void UI() { //Method UI (tournament menu)
-
-        System.out.println("* * * TOURNAMENT MENU * * *");
-        System.out.println("Please select an option below");
+    public void Ui() { //UI = user inputs
+        System.out.println(" *** WELCOME TO THE TOURNAMENT *** ");
+        System.out.println(" Please select an option below to start ");
+        System.out.println(" Type 'A' to create a new tournament ");
+        System.out.println(" Type 'B' to run an existing tournament ");
+        System.out.println(" Type 'Q' to quit the registration menu ");
         String userInput;
+        userInput = scan.nextLine();
         boolean tournamentExist = false;
 
-        do { //Do - While loop for more than one user inputs
+        do {
 
-            System.out.println("Type 'create' to create a new Tournament");
-            System.out.println("Type 'run' to run an existing Tournament");
-            System.out.println("Press Q to quit the program");
-            userInput = scan.nextLine();
-
-            if (userInput.equalsIgnoreCase("create")) {
+            if (userInput.equalsIgnoreCase("a")) {
 
                 createTournament();
 
-            } else if (userInput.equalsIgnoreCase("run")) {
+            } else if (userInput.equalsIgnoreCase("b")) {
 
                 startTournament();
 
             } else if (tournamentExist) {
-                System.out.println("Tournament does not exist, try a different one");
+                System.out.println("The tournament does not exists, please try again ");
 
             } else if (userInput.equalsIgnoreCase("q")) {
-                System.out.println("Quitting");
+                System.out.println("Quitting the registration program \n" + "Have a good day! ");
                 tournamentExist = false;
-
             }
-
-        } while (tournamentExist);
-
+        }
+        while (tournamentExist);
     }
 
-    public void createTournament() { //Method to create a tournament
+    public void createTournament() { //Method to create a new tournament
 
+        final int CURRENT_YEAR = 2021;
+        final int TOURNAMENT_START_TIME = 1000;
         String userInput;
         int userInputDate;
         int userInputMonth;
 
         System.out.println("Type the name of the tournament: ");
         userInput = scan.nextLine();
-        System.out.println("Type the day of the tournament. ");
+        System.out.println("Type which day the tournament is held: ");
         userInputDate = Integer.parseInt(scan.nextLine());
-        System.out.println("Type the month of the tournament. ");
+        System.out.println("Type which month the tournament is held: ");
         userInputMonth = Integer.parseInt(scan.nextLine());
 
-        //LocalDate.of(CURRENT_YEAR,userInputMonth,userInputDate);
 
-        try { // File writer. Making a new file for a tournament with year, date, month and time written of the first line
-            File newTournament = new File("src/" + userInput + ".txt");
-            BufferedWriter writeOut = new BufferedWriter(new FileWriter(newTournament));
-            writeOut.write("The tournament " + userInput + " starts " + CURRENT_YEAR + "-" + userInputMonth + "-" + userInputDate);
-            writeOut.close();
-        } catch (IOException e) {
-            System.out.println(e);
+        /* Using a boolean expression as a try catch. if there is a problem making a file
+        then I can catch it here, before it gets to the exception. Program stops if there is a
+        problem writing a file.
+         */
+        boolean filedWritten = Io.createNewTournamentFile(userInput, CURRENT_YEAR, userInputDate, userInputMonth, TOURNAMENT_START_TIME);
+        if (!filedWritten) {
+            System.out.println("Something went wrong, try again ");
+            return;
         }
 
-        System.out.println("Tournament created. ");
-
-        System.out.println("Would you like to start the game? ");
+        System.out.println("Tournament created.");
+        System.out.println("Would you like to start the tournament? ");
         String input = scan.nextLine();
         if (input.equalsIgnoreCase("yes")) {
-            startTournament(); //--------------------------- Starts the tournament----------------------------------
+            System.out.println("Starting the tournament: ");
+            Knockout.runTournament();//indsæt runTournament
         } else if (input.equalsIgnoreCase("no")) {
-            System.out.println("Quitting program");
+            System.out.println("Quitting the registration menu \n" + "Have a good day!");
         }
     }
 
-    public void startTournament() { // Method starts up the tournament
-
-        //LocalDate tournamentDate;
+    public void startTournament() { //Method to start a tournament
         String userInput;
 
-        System.out.println("Type the name of the tournament to run it. ");
+        System.out.println("Enter the name of the tournament, you wish to start: ");
         userInput = scan.nextLine();
-
         tournamentName = userInput;
 
-        try {
-            File file = new File("src/" + userInput + ".txt"); //
 
-            Scanner readFile = new Scanner(file);
-
-            //String[] dateValues = readFile.nextLine().split("-");
-            //tournamentDate = LocalDate.of(CURRENT_YEAR,Integer.parseInt(dateValues[1]),Integer.parseInt(dateValues[2]));
-
-            while (readFile.hasNextLine()) { // Gets the teams from the tournament text file and creates objects
-
-                String[] teamValues = readFile.nextLine().split(",");
-
-                ArrayList<Player> player = new ArrayList<>();
-                Player player1 = new Player(teamValues[2]);
-                Player player2 = new Player(teamValues[3]);
-                player.add(player1);
-                player.add(player2);
-
-                Team t = new Team(teamValues[1], player); // Creates a team with a team name and an array of players
-                participatingTeams.add(t);
-                player.clear();
-
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Tournament tournament = new Knockout(tournamentName, participatingTeams); // Creates the tournament object and starts it
-        tournament.runTournament();
+        Io.startTheTournament(userInput);
 
     }
 
+    Tournament tournament = new Knockout(tournamentName, participatingTeams);
+    tournament.runTournament();
 }
+
+
+
+
+

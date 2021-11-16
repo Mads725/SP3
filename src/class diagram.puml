@@ -80,6 +80,4 @@ Match : - private Team teamB
 
 Player : - private String name
 Player : + Override toString()
-
-
 @enduml
