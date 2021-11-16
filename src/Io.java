@@ -7,7 +7,9 @@ import java.util.Scanner;
 
 public class Io {
 
-    public boolean createNewTournamentFile(String name, int year, int day, int month, int gameTime) {
+    private static ArrayList<Team> participatingTeams = new ArrayList<>();
+
+    public static boolean createNewTournamentFile(String name, int year, int day, int month, int gameTime) {
         try {
             File createNewTournament = new File("src/" + name + ".txt");
             BufferedWriter writeOut = new BufferedWriter(new FileWriter(createNewTournament));
@@ -20,9 +22,13 @@ public class Io {
         }
     }
 
-    public static void startTheTournament(String name) {
+    public static void startTheTournament(String tournamentName) {
+
+        participatingTeams.clear(); //Maybe
+
         try {
-            File file = new File("scr/" + name + ".txt");
+
+            File file = new File("src/" + tournamentName + ".txt");
             Scanner readFile = new Scanner(file);
 
             while (readFile.hasNextLine()) {
@@ -34,11 +40,15 @@ public class Io {
                 player.add(player2);
 
                 Team t = new Team(teamValues[1], player); // Creates a team with a team name and an array of players
-                Main.control.participatingTeams.add(t);
+                participatingTeams.add(t);
                 player.clear();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Tournament tournament = new Knockout(tournamentName, participatingTeams);
+        tournament.runTournament();
+
     }
 }

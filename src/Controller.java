@@ -1,14 +1,10 @@
-import java.io.FileWriter;
-import java.util.ArrayList;
 import java.util.Scanner;
-
 
 public class Controller {
 
-    private String tournamentName;
-    ArrayList<Team> participatingTeams = new ArrayList<>();
-    Scanner scan = new Scanner(System.in);
-    Io Io = new Io(); //Method calling
+    final static int CURRENT_YEAR = 2021;
+    final static int TOURNAMENT_START_TIME = 1000;
+    private Scanner scan = new Scanner(System.in);
 
     public void Ui() { //UI = user inputs
         System.out.println(" *** WELCOME TO THE TOURNAMENT *** ");
@@ -43,8 +39,6 @@ public class Controller {
 
     public void createTournament() { //Method to create a new tournament
 
-        final int CURRENT_YEAR = 2021;
-        final int TOURNAMENT_START_TIME = 1000;
         String userInput;
         int userInputDate;
         int userInputMonth;
@@ -71,8 +65,10 @@ public class Controller {
         System.out.println("Would you like to start the tournament? ");
         String input = scan.nextLine();
         if (input.equalsIgnoreCase("yes")) {
+
             System.out.println("Starting the tournament: ");
-            Knockout.runTournament();//indsæt runTournament
+            Io.startTheTournament(userInput); //Tests
+
         } else if (input.equalsIgnoreCase("no")) {
             System.out.println("Quitting the registration menu \n" + "Have a good day!");
         }
@@ -83,15 +79,12 @@ public class Controller {
 
         System.out.println("Enter the name of the tournament, you wish to start: ");
         userInput = scan.nextLine();
-        tournamentName = userInput;
+        String tournamentName = userInput;
 
-
-        Io.startTheTournament(userInput);
+        Io.startTheTournament(tournamentName);
 
     }
 
-    Tournament tournament = new Knockout(tournamentName, participatingTeams);
-    tournament.runTournament();
 }
 
 

@@ -9,7 +9,7 @@
 9,Avengers,Tony Stark,Steve Rogers
 10,Heroes,Clark Kent,Diana Prince
 11,TheNoobs,Dupreeh,Gla1ve
-12,WalkingDead,Daryl Dixon, Rick Grimes
+12,WalkingDead,Daryl Dixon,Rick Grimes
 13,BFF,Helge Jørgen,Ib Sørensen
 14,MVP,Torben Torbensen,Erika Eriksen
 15,Hustlers,Julie Jørgensen,Kristina Christensen
