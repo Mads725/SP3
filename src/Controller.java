@@ -2,8 +2,6 @@ import java.util.Scanner;
 
 public class Controller {
 
-    final static int CURRENT_YEAR = 2021;
-    final static int TOURNAMENT_START_TIME = 1000;
     private Scanner scan = new Scanner(System.in);
 
     public void Ui() { //UI = user inputs
@@ -56,7 +54,8 @@ public class Controller {
         then I can catch it here, before it gets to the exception. Program stops if there is a
         problem writing a file.
          */
-        boolean filedWritten = Io.createNewTournamentFile(userInput, CURRENT_YEAR, userInputDate, userInputMonth, TOURNAMENT_START_TIME);
+        boolean filedWritten = Io.createNewTournamentFile(
+                userInput, Final.TOURNAMENT_START_YEAR, userInputDate, userInputMonth, Final.TOURNAMENT_START_TIME);
         if (!filedWritten) {
             System.out.println("Something went wrong, try again ");
             return;
@@ -68,14 +67,14 @@ public class Controller {
         if (input.equalsIgnoreCase("yes")) {
 
             System.out.println("Starting the tournament: ");
-            Io.startTheTournament(userInput); //Tests
+            Io.startTheTournament(userInput);
 
         } else if (input.equalsIgnoreCase("no")) {
             System.out.println("Quitting the registration menu \n" + "Have a good day!");
         }
     }
 
-    public void startTournament() { //Method to start a tournament
+    public void startTournament() { //Method to select which tournament to start
 
         String userInput;
 

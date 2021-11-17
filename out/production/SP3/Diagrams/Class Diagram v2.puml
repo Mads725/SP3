@@ -1,46 +1,62 @@
 @startuml
-Abstract Tournament
-class Controller
-class Team
-class Match
-class Bracket
-class Player
+Abstract Final
 class Main
+class Controller
+class Io
+Abstract Tournament
+class DBConnector
 class Knockout
+class Bracket
+class Match
+class Team
+class Player
 class Group
 
 Main *-- Controller
-Controller *-- Tournament
-Tournament "1" <|-- "has a" Knockout
-Tournament "1" <|-- "has a" Group
+Controller *-- Io
+Io *-- Tournament
+Tournament "1" <|-- "is a" Knockout
+Tournament "1" <|-- "is a" Group
 Knockout "1" *--"1"Bracket :contains
 Group "1" *-- "many" Match :contains
 Bracket "1" *-- "16" Team :contains
 Bracket "1" *-- "15" Match :contains
 Team "1" *-- "2" Player :contains
 Match "1" *-- "2" Team :contains
+Io *-- DBConnector
 
 Main : + control.UI()
 
+Final : - String READ_LOCATION
+Final : - int TOURNAMENT_START_YEAR
+Final : - int TOURNAMENT_START_TIME
+
+Io : + boolean createNewTournamentFile()
+Io : + void startTheTournament()
+Io : - private ArrayList<Team>participatingTeams
+
+DBConnector : - final String DB_URL
+DBConnector : - final String USER
+DBConnector : - final String PASS
+DBConnector : - int resultCounter = 0;
+DBConnector : + String[] readTeamsData()
+
 Controller : + void UI()
 Controller : + void createTournament()
-Controller : - private final {static} int CURRENT_YEAR
-Controller : - private final {static} int TOURNAMENT_START_TIME
 Controller : + void startTournament()
-Controller : - private ArrayList<Team>participatingTeams
-Controller : - private String tournamentName
 Controller : - Scanner scan
 
-Tournament : - private String tournamentWinner
-Tournament : - private String tournamentName
+Tournament : - private final String tournamentName
+Tournament : - private team tournamentWinner
 Tournament : - private int tournamentStartTime
 Tournament : - private ArrayList<Team> teams
-Tournament : - private ArrayList<Match> matches
-Tournament : + Override toString()
 Tournament : # protected Bracket connectedBracket
-Tournament : + void saveTournamentData()
-Tournament : + void loadTournamentData()
-Tournament : + abstract void runTournament()
+Tournament : + tournament()
+Tournament : + getTournamentName()
+Tournament : + Team getTournamentWinner()
+Tournament : + void setTournamentWinner()
+Tournament : + ArrayList<Team> getTeams()
+Tournament : + abstract void runTournament();
 
 Knockout : + Override runTournament()
 Knockout : - String name
@@ -58,19 +74,16 @@ Bracket : - private int roundNumber
 Bracket : + void randomSeeding()
 Bracket : + void startMatch()
 Bracket : + void nextRound()
-Bracket : + void matchHistory()
 Bracket : + void nextMatchReminder(int currentMatch)
 
 Team : - private final String teamName
 Team : - private int totalGoalScore
 Team : - private ArrayList<Player>players
-Team : + void addPlayer()
-Team : + void removePlayer()
 Team : + Override toString()
+Team : + void setTotalGoalScore()
+Team : + String getTeamName()
 
-Match : - private String gameTime
 Match : + void matchWinner()
-Match : + Team randomMatchWinner()
 Match : + Override toString()
 Match : - private int teamAScore
 Match : - private int teamBScore

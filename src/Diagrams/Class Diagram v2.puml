@@ -1,15 +1,16 @@
 @startuml
-Abstract Tournament
-class Controller
-class Team
-class Match
-class Bracket
-class Player
+Abstract Final
 class Main
-class Knockout
-class Group
+class Controller
 class Io
+Abstract Tournament
 class DBConnector
+class Knockout
+class Bracket
+class Match
+class Team
+class Player
+class Group
 
 Main *-- Controller
 Controller *-- Io
@@ -26,10 +27,13 @@ Io *-- DBConnector
 
 Main : + control.UI()
 
+Final : - String READ_LOCATION
+Final : - int TOURNAMENT_START_YEAR
+Final : - int TOURNAMENT_START_TIME
+
 Io : + boolean createNewTournamentFile()
 Io : + void startTheTournament()
 Io : - private ArrayList<Team>participatingTeams
-Io : - public final String READ_LOCATION
 
 DBConnector : - final String DB_URL
 DBConnector : - final String USER
@@ -37,11 +41,8 @@ DBConnector : - final String PASS
 DBConnector : - int resultCounter = 0;
 DBConnector : + String[] readTeamsData()
 
-
 Controller : + void UI()
 Controller : + void createTournament()
-Controller : - private final {static} int CURRENT_YEAR
-Controller : - private final {static} int TOURNAMENT_START_TIME
 Controller : + void startTournament()
 Controller : - Scanner scan
 
@@ -49,7 +50,6 @@ Tournament : - private final String tournamentName
 Tournament : - private team tournamentWinner
 Tournament : - private int tournamentStartTime
 Tournament : - private ArrayList<Team> teams
-Tournament : - private ArrayList<Match> matches
 Tournament : # protected Bracket connectedBracket
 Tournament : + tournament()
 Tournament : + getTournamentName()

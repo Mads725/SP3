@@ -6,7 +6,6 @@ abstract public class Tournament {
     private Team tournamentWinner;
     private int tournamentStartTime; //useless
     private ArrayList<Team> teams;
-    private ArrayList<Match> matches; //useless
     protected Bracket connectedBracket;
 
     public Tournament(String tournamentName, ArrayList<Team> teams) {

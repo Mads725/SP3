@@ -1,16 +1,17 @@
-1,Lucadors,Mads Herlevsen,Martin Lorentzen
-2,Postmændene,Per Jensen,Jens Persson
-3,Datamans,Geoff Nielsen,Mark Topson
-4,FlowerPower,Sofie Jacobsen,Brit Brittsen
-5,TheBots,Siri Apple,Alexa Amazon
-6,TheNerds,Sheldon Copper,Leonard Hofstadter
-7,DesperateHousewives,Eva Longoria,Felicity Huffman
-8,PirateClan,Long John Silver,Bluebeard
-9,Avengers,Tony Stark,Steve Rogers
-10,Heroes,Clark Kent,Diana Prince
-11,TheNoobs,Dupreeh,Gla1ve
-12,WalkingDead,Daryl Dixon,Rick Grimes
-13,BFF,Helge Jørgen,Ib Sørensen
-14,MVP,Torben Torbensen,Erika Eriksen
-15,Hustlers,Julie Jørgensen,Kristina Christensen
-16,Bulletproof,Mikkel Mikkelsen,Paula Oluffsson
+The tournament top starts on: 2021-4-7-1000
+Lucadors,Mads Herlevsen,Martin Lorentzen
+Postmændene,Per Jensen,Jens Persson
+Datamans,Geoff Nielsen,Mark Topson
+FlowerPower,Sofie Jacobsen,Brit Brittsen
+TheBots,Siri Apple,Alexa Amazon
+TheNerds,Sheldon Copper,Leonard Hofstadter
+DesperateHousewives,Eva Longoria,Felicity Huffman
+PirateClan,Long John Silver,Bluebeard
+Avengers,Tony Stark,Steve Rogers
+Heroes,Clark Kent,Diana Prince
+TheNoobs,Dupreeh,Gla1ve
+WalkingDead,Daryl Dixon,Rick Grimes
+BFF,Helge Jørgen,Ib Sørensen
+MVP,Torben Torbensen,Erika Eriksen
+Hustlers,Julie Jørgensen,Kristina Christensen
+Bulletproof,Mikkel Mikkelsen,Paula Oluffsson

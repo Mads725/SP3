@@ -4,7 +4,6 @@ public class DBConnector{
 
     // database URL
     static final String DB_URL = "jdbc:mysql://localhost/Tournament";
-
     //  Database credentials
     static final String USER = "Formand";
     static final String PASS = "Qwerty21";
@@ -32,7 +31,7 @@ public class DBConnector{
             String sql = "SELECT * FROM Teams";
             ResultSet rs = stmt.executeQuery(sql);
 
-            //STEP 5: Extract data from result set
+            //STEP 5: Extract data from result set and returns it as a 16 string array to the startTheTournament() in Io
             while(rs.next()){
 
                 String teamName = rs.getString("team");
@@ -45,6 +44,7 @@ public class DBConnector{
                 teamsData[resultCounter] = combinedTeam;
                 resultCounter++;
             }
+
             //STEP 6: Clean-up environment
             rs.close();
             stmt.close();

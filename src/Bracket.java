@@ -97,6 +97,6 @@ public class Bracket {
         }
 
     }
-    public void matchHistory() {    }
+    public void matchHistory() {    } // Unused
 
 }
