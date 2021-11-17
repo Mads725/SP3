@@ -8,8 +8,8 @@ public class Controller {
 
         System.out.println(" *** WELCOME TO THE TOURNAMENT *** ");
         System.out.println(" Please select an option below to start ");
-        System.out.println(" Type 'A' to create a new tournament ");
-        System.out.println(" Type 'B' to run an existing tournament ");
+        System.out.println(" Type 'E' to create a new tournament ");
+        System.out.println(" Type 'W' to run an existing tournament ");
         System.out.println(" Type 'Q' to quit the registration menu ");
         String userInput;
         userInput = scan.nextLine();
@@ -17,11 +17,11 @@ public class Controller {
 
         do {
 
-            if (userInput.equalsIgnoreCase("a")) {
+            if (userInput.equalsIgnoreCase("e")) {
 
                 createTournament();
 
-            } else if (userInput.equalsIgnoreCase("b")) {
+            } else if (userInput.equalsIgnoreCase("w")) {
 
                 startTournament();
 
