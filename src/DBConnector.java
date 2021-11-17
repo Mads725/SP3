@@ -3,16 +3,19 @@ import java.sql.*;
 public class DBConnector{
 
     // database URL
-    static final String DB_URL = "jdbc:mysql://localhost/Matador";
+    static final String DB_URL = "jdbc:mysql://localhost/Tournament";
 
     //  Database credentials
-    static final String USER = "root";
-    static final String PASS = "testdat1";
+    static final String USER = "Formand";
+    static final String PASS = "Qwerty21";
 
-    public String[] readFieldData() {
-        String[] field_data = new String[40];
+    public String[] readTeamsData() {
+        String[] teamsData = new String[16];
         Connection conn = null;
         Statement stmt = null;
+
+        int resultCounter = 0;
+
         try{
             //STEP 2: Register JDBC driver
             // Class.forName("com.mysql.jdbc.Driver");
@@ -26,16 +29,21 @@ public class DBConnector{
             stmt = conn.createStatement();
 
 
-            String sql = "SELECT * FROM Field";
+            String sql = "SELECT * FROM Teams";
             ResultSet rs = stmt.executeQuery(sql);
 
             //STEP 5: Extract data from result set
             while(rs.next()){
-                //Retrieve by column name
-                int id  = rs.getInt("id");
 
-                //field_data[id-1]=id+","+field_type+","+label+","+cost+","+income+","+seriesID;
+                String teamName = rs.getString("team");
+                String player1 = rs.getString("player1");
+                String player2 = rs.getString("player2");
 
+                String combinedTeam;
+                combinedTeam = teamName+","+player1+","+player2;
+
+                teamsData[resultCounter] = combinedTeam;
+                resultCounter++;
             }
             //STEP 6: Clean-up environment
             rs.close();
@@ -62,7 +70,6 @@ public class DBConnector{
             }//end finally try
         }//end try
 
-
-        return field_data;
+        return teamsData;
     }
 }

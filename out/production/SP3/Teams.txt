@@ -1,3 +1,0 @@
-1,Lucadors,Mads Herlevsen,Long He,Martin Lorentzen
-2,Postmændene,Per Jensen,Jens person
-3,Datamans,Geoff Nielsen,Mark Topson

@@ -7,6 +7,7 @@ public class Controller {
     private Scanner scan = new Scanner(System.in);
 
     public void Ui() { //UI = user inputs
+
         System.out.println(" *** WELCOME TO THE TOURNAMENT *** ");
         System.out.println(" Please select an option below to start ");
         System.out.println(" Type 'A' to create a new tournament ");
@@ -75,6 +76,7 @@ public class Controller {
     }
 
     public void startTournament() { //Method to start a tournament
+
         String userInput;
 
         System.out.println("Enter the name of the tournament, you wish to start: ");

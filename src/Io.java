@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class Io {
 
+    private static final String READ_LOCATION = "DATABAkSE";
+
     private static ArrayList<Team> participatingTeams = new ArrayList<>();
 
     public static boolean createNewTournamentFile(String name, int year, int day, int month, int gameTime) {
@@ -26,29 +28,52 @@ public class Io {
 
         participatingTeams.clear(); //Maybe
 
-        try {
+        if (READ_LOCATION == "DATABASE") {
 
-            File file = new File("src/" + tournamentName + ".txt");
-            Scanner readFile = new Scanner(file);
+            DBConnector DB = new DBConnector();
+            String[] temp = DB.readTeamsData();
 
-            while (readFile.hasNextLine()) {
-                String[] teamValues = readFile.nextLine().split(",");
+            for (String s : temp) {
+
+                String[] teamValues = s.split(",");
                 ArrayList<Player> player = new ArrayList<>();
-                Player player1 = new Player(teamValues[2]);
-                Player player2 = new Player(teamValues[3]);
+                Player player1 = new Player(teamValues[1]);
+                Player player2 = new Player(teamValues[2]);
                 player.add(player1);
                 player.add(player2);
 
-                Team t = new Team(teamValues[1], player); // Creates a team with a team name and an array of players
+                Team t = new Team(teamValues[0],player);
                 participatingTeams.add(t);
                 player.clear();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+
+            Tournament tournament = new Knockout(tournamentName, participatingTeams);
+            tournament.runTournament();
+
+        } else {
+            try {
+                File file = new File("src/" + tournamentName + ".txt");
+                Scanner readFile = new Scanner(file);
+
+                while (readFile.hasNextLine()) {
+                    String[] teamValues = readFile.nextLine().split(",");
+                    ArrayList<Player> player = new ArrayList<>();
+                    Player player1 = new Player(teamValues[2]);
+                    Player player2 = new Player(teamValues[3]);
+                    player.add(player1);
+                    player.add(player2);
+
+                    Team t = new Team(teamValues[1], player); // Creates a team with a team name and an array of players
+                    participatingTeams.add(t);
+                    player.clear();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Tournament tournament = new Knockout(tournamentName, participatingTeams);
+            tournament.runTournament();
+
         }
-
-        Tournament tournament = new Knockout(tournamentName, participatingTeams);
-        tournament.runTournament();
-
     }
 }

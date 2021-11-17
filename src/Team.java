@@ -36,7 +36,7 @@ public class Team {
 
     @Override
     public String toString() {
-        return "Team " + teamName +  " - Players : " + players;
+        return "Team " + teamName +  " - Players:" + players;
     }
 
 }
