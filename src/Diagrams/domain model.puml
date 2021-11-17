@@ -10,7 +10,8 @@ object Bracket
 object Player
 
 Main *-- Controller
-Controller *-- Tournament
+Controller *-- Io
+Io *-- Tournament
 Tournament <|-- Knockout
 Tournament <|-- Group
 Knockout *-- Bracket
